@@ -8,7 +8,7 @@ return [
     'bootstrap' => ['RedirectComponent','log'],
     'components' => [
         'RedirectComponent' => [
-            'class'=>'frontend\components\RedirectComponent',
+            'class'=>'frontend\vendor\svetamor\redirectcomponent\RedirectComponent',
         ],   
     ],
     ...
