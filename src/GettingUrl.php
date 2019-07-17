@@ -1,17 +1,20 @@
 <?php
-namespace svetamor\redirectcomponent;
-use svetamor\redirectcomponent\interfaces\GettingUrlInterface;
+namespace svetamor\redirect;
 
-class GettingUrl implements GettingUrlInterface{
+use app\components\redirect\interfaces\GettingUrlInterface;
 
-   public function getUrl($arr, $url){
-      $new_url = $url;
-      $limit = count($arr);
+class GettingUrl implements GettingUrlInterface
+{
+    public static function getUrl($arr, $url)
+    {
+        $newUrl = $url;
+        $limit = count($arr);
       
-      for ($count = 0; $count < $limit; $count++) 
-         if ($arr[$count][0] == $url) {
-            $new_url = $arr[$count][1];
-            Redirect::redirect($new_url);
-         }  
-   }
-}   
+        for ($count = 0; $count < $limit; $count++) {
+            if ($arr[$count][0] === $url) {
+                $newUrl = $arr[$count][1];
+                Redirect::redirect($newUrl);
+            }
+        }    
+    }
+}

@@ -1,6 +1,7 @@
 <?php
-namespace svetamor\redirectcomponent\interfaces;
+namespace svetamor\redirect\interfaces;
 
-interface ArrayInterface {
-   public function getArr($file_path, $url);
+interface ArrayInterface
+{
+    public static function getArr($filePath, $url);
 }

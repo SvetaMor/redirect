@@ -13,10 +13,9 @@
         }
     ],
     "autoload": {
-   	"psr-4": {
-   		"svetamor\\redirectcomponent\\":"src/",
-		"svetamor\\redirectcomponent\\interfaces\\":"src/interfaces/"
-   	}
+        "psr-4": {
+            "svetamor\\redirect\\":"src/"
+   	    }
     },
     "minimum-stability": "stable"
 }

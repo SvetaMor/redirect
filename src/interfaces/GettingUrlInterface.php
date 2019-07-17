@@ -1,6 +1,7 @@
 <?php
-namespace svetamor\redirectcomponent\interfaces;
+namespace svetamor\redirect\interfaces;
 
-interface GettingUrlInterface {
-   public function getUrl($arr, $url);
+interface GettingUrlInterface
+{
+    public static function getUrl($arr, $url);
 }
