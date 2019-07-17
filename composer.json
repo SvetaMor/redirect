@@ -1,7 +1,7 @@
 {
     "name": "svetamor/redirect-package",
-    "description": "redirect from file",
-    "type": "library",
+    "description": "redirect from file and bd",
+    "type": "yii2-extension",
     "require": {
         "yiisoft/yii2": "^2.0"
     },
