@@ -1,23 +1,26 @@
 <?php
 namespace svetamor\redirect;
 
-use yii\base\Component;
+use yii\base\BaseObject;
+use svetamor\redirect\interfaces\IArray;
+use yii\di\Container;
 
-class RedirectComponent extends Component{ 
-   
-    private $filePath;
-    private $currUrl;
-   
+class RedirectComponent extends BaseObject
+{
     public function init()
     {
-        $this->currUrl =  $_SERVER['REQUEST_URI'];
-       
-        //редирект из файла 
-        //$this->filePath = '/files/redirect.csv';
-        //ArrayCsv::getArr($this->filePath, $this->currUrl);
-       
+        $container= new Container();
+        $currUrl =  $_SERVER['REQUEST_URI'];
+        
         //редирект из БД
-        $this->filePath = 'redirect';
-        ArrayBd::getArr($this->filePath, $this->currUrl);
+        //$container->set('IArray','\svetamor\redirect\ArrayBd');
+        //$filePath = 'redirect';
+        
+        //редирект из файла
+        $container->set('IArray','\svetamor\redirect\ArrayCsv');
+        $filePath = '/files/redirect.csv';
+        
+        $obj = $container->get('IArray');
+        $obj->getArr($filePath, $currUrl);
     }
 } 

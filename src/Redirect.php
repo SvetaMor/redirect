@@ -1,7 +1,9 @@
 <?php
 namespace svetamor\redirect;
 
-class Redirect
+use svetamor\redirect\interfaces\IRedirect;
+
+class Redirect implements IRedirect
 {
     public static function redirect($url)
     {
