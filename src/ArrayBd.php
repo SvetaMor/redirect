@@ -1,18 +1,22 @@
 <?php
-namespace svetamor\redirect;
+namespace svetamor\redirect\interfaces;
 
 use svetamor\redirect\interfaces\IArray;
 use svetamor\redirect\interfaces\IGettingUrl;
-use yii\di\Container;
 use yii\db\Query;
 
 class ArrayBd implements IArray
 {
-    public static function getArr($tableName, $url)
+    protected $gettingUrl;
+    
+    public function __construct(IGettingUrl $gettingUrl)
     {
-        $container= new Container();
-        $container->set('IGettingUrl','\svetamor\redirect\GettingUrl');
-        $obj = $container->get('IGettingUrl');
+        $this->gettingUrl = $gettingUrl; 
+    }
+    
+    public function getArr($url)
+    {
+        $tableName = 'redirect';
         
         $arr = (new Query())
             ->select(['currUrl','newUrl'])
@@ -24,7 +28,7 @@ class ArrayBd implements IArray
         for ($count = 0; $count < $limit; $count++) {
             $newArr[$count] = array_values($arr[$count]);
         }    
-          
-        $obj->getUrl($newArr, $url);
+         
+        $this->gettingUrl->getUrl($newArr, $url);
     }
 }
