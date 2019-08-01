@@ -6,8 +6,14 @@ redirect 301 in Yii2
     'bootstrap' => ['RedirectComponent','log'],
     'container' => [
         'definitions' => [
-            \frontend\vendor\svetamor\redirect\interfaces\IArray::class => \frontend\vendor\svetamor\redirect\ArrayBd::class,
-          //\frontend\vendor\svetamor\redirect\interfaces\IArray::class => \frontend\vendor\svetamor\redirect\ArrayCsv::class,
+            \frontend\vendor\svetamor\redirect\interfaces\AbstractArray::class => [
+                'class' => \frontend\vendor\svetamor\redirect\ArrayBd::class,
+                'filePath' => 'redirect',
+            ],
+            /*\frontend\vendor\svetamor\redirect\interfaces\AbstractArray::class => [
+                'class' => \frontend\vendor\svetamor\redirect\ArrayCsv::class,
+                'filePath' => '/files/redirect.csv',
+             ],*/
             \frontend\vendor\svetamor\redirect\interfaces\IGettingUrl::class => \frontend\vendor\svetamor\redirect\GettingUrl::class,
             \frontend\vendor\svetamor\redirect\interfaces\IRedirect::class => \frontend\vendor\svetamor\redirect\Redirect::class,
         ],

@@ -2,13 +2,13 @@
 namespace svetamor\redirect;
 
 use yii\base\BaseObject;
-use svetamor\redirect\interfaces\IArray;
+use svetamor\redirect\interfaces\AbstractArray;
 
 class RedirectComponent extends BaseObject
 {
     protected $arr;
     
-    public function __construct(IArray $arr)
+    public function __construct(AbstractArray $arr)
     {
         $this->arr = $arr; 
         $this->init();
@@ -16,7 +16,7 @@ class RedirectComponent extends BaseObject
     
     public function init()
     {
-        $currUrl =  $_SERVER['REQUEST_URI'];
+        $currUrl = \Yii::$app->request->url;
         
         $this->arr->getArr($currUrl);
     }

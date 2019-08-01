@@ -1,22 +1,13 @@
 <?php
 namespace svetamor\redirect;
 
-use svetamor\redirect\interfaces\IArray;
-use svetamor\redirect\interfaces\IGettingUrl;
+use svetamor\redirect\interfaces\AbstractArray;
 
-class ArrayCsv implements IArray
+class ArrayCsv extends AbstractArray
 {
-    protected $gettingUrl;
-    
-    public function __construct(IGettingUrl $gettingUrl)
-    {
-        $this->gettingUrl = $gettingUrl; 
-    }
-    
     public function getArr($url)
     {
-        $filePath = '/files/redirect.csv';
-        $fileName = \Yii::getAlias('@webroot').$filePath;
+        $fileName = \Yii::getAlias('@webroot').$this->filePath;
         $csv = array_map('str_getcsv',file($fileName));
         
         $this->gettingUrl->getUrl($csv, $url);
